@@ -1,0 +1,20 @@
+Bootstrap suulgah:
+	http://bootstrap.braincrafted.com/getting-started.html
+		assetic:
+			debug:          "%kernel.debug%"
+			use_controller: false
+			bundles:        [ ]
+			#java: /usr/bin/java
+			filters:
+				less:
+					node: node
+					node_paths: [C:\Users\otgonoo\AppData\Roaming\npm\node_modules]
+					apply_to: "\.less$"
+				cssrewrite: ~
+
+php app/console doctrine:mapping:import --force HuselFrontendBundle annotation
+php app/console doctrine:generate:entities Husel/FrontendBundle
+
+php app/console doctrine:schema:update --force
+
+#php app/console doctrine:mapping:convert annotation ./src/Husel/FrontendBundle/Entity/
