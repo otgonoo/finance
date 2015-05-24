@@ -1,0 +1,4 @@
+services:
+#    husel_user.example:
+#        class: Husel\UserBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

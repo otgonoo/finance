@@ -1,0 +1,94 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+{% block fos_user_content %}
+    <!--link rel="stylesheet" href="{{asset('/css/login.css')}}"-->
+    <div class="row">
+        {% if error %}
+            <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
+        <div class="col-xs-12 col-sm-12 col-md-7 col-lg-8 hidden-xs hidden-sm">
+            <h1 class="txt-color-red login-header-big">SmartAdmin</h1>
+            <div class="hero">
+
+                <div class="pull-left login-desc-box-l">
+                    <h4 class="paragraph-header">It's Okay to be Smart. Experience the simplicity of SmartAdmin, everywhere you go!</h4>
+                    <div class="login-app-icons">
+                        <a class="btn btn-danger btn-sm" href="javascript:void(0);">Frontend Template</a>
+                        <a class="btn btn-danger btn-sm" href="javascript:void(0);">Find out more</a>
+                    </div>
+                </div>
+
+                <img style="width:210px" alt="" class="pull-right display-image" src="img/demo/iphoneview.png">
+
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <h5 class="about-heading">About SmartAdmin - Are you up to date?</h5>
+                    <p>
+                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa.
+                    </p>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <h5 class="about-heading">Not just your average template!</h5>
+                    <p>
+                        Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi voluptatem accusantium!
+                    </p>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-5 col-lg-4">
+            <div class="well no-padding">
+                <form class="smart-form client-form" id="login-form" action="{{ path("fos_user_security_check") }}" method="post" novalidate="novalidate">
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                    <header>
+                        Нэвтрэх
+                    </header>
+                    <fieldset>
+                        <section>
+                            <label class="label">Нэвтрэх нэр</label>
+                            <label class="input"> <i class="icon-append fa fa-user"></i>
+                                <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" autofocus="1" placeholder="Нэвтрэх нэр үг"/>
+                                <b class="tooltip tooltip-top-right"><i class="fa fa-user txt-color-teal"></i> Та нэвтрэх нэрээ оруулна уу</b></label>
+                        </section>
+                        <section>
+                            <label class="label">Нууц үг</label>
+                            <label class="input"> <i class="icon-append fa fa-lock"></i>
+                                <input type="password" id="password" name="_password" required="required" class="form-control" placeholder="Нууц үг" autocomplete="off"/>
+                                <b class="tooltip tooltip-top-right"><i class="fa fa-lock txt-color-teal"></i> Нууц үгээ оруулна уу</b> </label>
+                            <div class="note">
+                                <a href="forgotpassword.html">Forgot password?</a>
+                            </div>
+                        </section>
+                        <section>
+                            <label class="checkbox">
+                                <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+                                <i></i>{{ 'security.login.remember_me'|trans }}</label>
+                        </section>
+                    </fieldset>
+                    <footer>
+                        <button class="btn btn-primary" type="submit" name="_submit" id="_submit">
+                            Нэвтрэх
+                        </button>
+                    </footer>
+                </form>
+
+            </div>
+
+            <h5 class="text-center"> - Or sign in using -</h5>
+
+            <ul class="list-inline text-center">
+                <li>
+                    <a class="btn btn-primary btn-circle" href="javascript:void(0);"><i class="fa fa-facebook"></i></a>
+                </li>
+                <li>
+                    <a class="btn btn-info btn-circle" href="javascript:void(0);"><i class="fa fa-twitter"></i></a>
+                </li>
+                <li>
+                    <a class="btn btn-warning btn-circle" href="javascript:void(0);"><i class="fa fa-linkedin"></i></a>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+{% endblock fos_user_content %}

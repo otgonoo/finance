@@ -1,0 +1,18 @@
+parameters:
+    husel.journal.class: Husel\FrontendBundle\Controller\JournalController
+services:
+    app.menu_builder:
+        class: Husel\FrontendBundle\Menu\MenuBuilder
+        arguments: ["@knp_menu.factory"]
+
+    app.main_menu:
+        class: Knp\Menu\MenuItem # the service definition requires setting the class
+        factory_service: app.menu_builder
+        factory_method: createMainMenu
+        arguments: []
+        tags:
+            - { name: knp_menu.menu, alias: main } # The alias is what is used to retrieve the menu
+    husel.journal:
+        class: "%husel.journal.class%"
+        arguments:
+            entityManager: "@doctrine.orm.entity_manager"
